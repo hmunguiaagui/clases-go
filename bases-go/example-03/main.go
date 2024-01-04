@@ -5,6 +5,7 @@ import "fmt"
 // Functions excersice
 func main() {
 
+	// Excersice 1
 	const (
 		salary1 = 50000.0
 		salary2 = 50001.0
@@ -20,6 +21,11 @@ func main() {
 	fmt.Printf("The tax of employee 2 with salary %.2f is %.2f\n", salary2, e2)
 	fmt.Printf("The tax of employee 3 with salary %.2f is %.2f\n", salary3, e3)
 	fmt.Printf("The tax of employee 4 with salary %.2f is %.2f\n", salary4, e4)
+
+	// Excersice 2
+	a := average(1, 2, 3, 4, 5)
+	fmt.Printf("-----\nThe average of 1, 2, 3, 4, 5 is %.2f\n", a)
+
 }
 
 // Function that returns the tax of a salary employee
@@ -34,4 +40,14 @@ func e1Tax(salary float64) (tax float64) {
 	default:
 		return 0
 	}
+}
+
+// Function that returns the averge of N numbers
+func average(numbers ...float64) (average float64) {
+	var sum float64
+	for _, number := range numbers {
+		sum += number
+	}
+	average = sum / float64(len(numbers))
+	return average
 }
