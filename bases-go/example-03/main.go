@@ -23,9 +23,12 @@ func main() {
 	fmt.Printf("The tax of employee 4 with salary %.2f is %.2f\n", salary4, e4)
 
 	// Excersice 2
-	a := average(1, 2, 3, 4, 5)
-	fmt.Printf("-----\nThe average of 1, 2, 3, 4, 5 is %.2f\n", a)
+	average := e2average(1, 2, 3, 4, 5)
+	fmt.Printf("-----\nThe average of 1, 2, 3, 4, 5 is %.2f\n", average)
 
+	// Excersice 3
+	salary := e3salary("A", 120)
+	fmt.Printf("-----\nThe salary of employee type A with 120 minutes worked is %.2f\n", salary)
 }
 
 // Function that returns the tax of a salary employee
@@ -43,11 +46,29 @@ func e1Tax(salary float64) (tax float64) {
 }
 
 // Function that returns the averge of N numbers
-func average(numbers ...float64) (average float64) {
+func e2average(numbers ...float64) (average float64) {
 	var sum float64
 	for _, number := range numbers {
 		sum += number
 	}
 	average = sum / float64(len(numbers))
 	return average
+}
+
+// Function that returns the salary by employee type and minutes worked
+func e3salary(employeeType string, minutesWorked int) (salary float64) {
+	hoursWorked := float64(minutesWorked / 60.0)
+	switch employeeType {
+	case "A":
+		salary = 3000.0 * hoursWorked
+		salary += salary * 0.5
+	case "B":
+		salary = 1500.0 * hoursWorked
+		salary += salary * 0.2
+	case "C":
+		salary = 1000.0 * hoursWorked
+	default:
+		salary = 0.0
+	}
+	return salary
 }
