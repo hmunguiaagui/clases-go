@@ -72,3 +72,32 @@ func e3salary(employeeType string, minutesWorked int) (salary float64) {
 	}
 	return salary
 }
+
+// Function that calculates the min, max and average of N college score, the operation is indicated as a parameter with the scores and returns the result
+func e4college(operation string, scores ...float64) (result float64) {
+	switch operation {
+	case "min":
+		result = scores[0]
+		for _, score := range scores {
+			if score < result {
+				result = score
+			}
+		}
+	case "max":
+		result = scores[0]
+		for _, score := range scores {
+			if score > result {
+				result = score
+			}
+		}
+	case "average":
+		var sum float64
+		for _, score := range scores {
+			sum += score
+		}
+		result = sum / float64(len(scores))
+	default:
+		result = 0.0
+	}
+	return result
+}
