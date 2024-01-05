@@ -19,7 +19,6 @@ func ReadCSV() []Ticket {
 	// Read file
 	reader := csv.NewReader(file)
 	reader.Comma = ','
-	reader.FieldsPerRecord = -1
 	// Read all records
 	rawCSVdata, err := reader.ReadAll()
 	if err != nil {

@@ -71,19 +71,11 @@ func GetCountByPeriod() ([]string, []int, error) {
 func AverageDestination(destination string) (float64, error) {
 	// Declare a variable to store the total of tickets in csv file
 	var total int = len(tickets)
-	// Declare a variable to store the total of tickets for the destination
-	var totalDestination int
-	// Loop through the tickets slice
-	for _, ticket := range tickets {
-		// Check if the destination is the same as the destination parameter
-		if ticket.DestinationCountry == destination {
-			// Increment the total of tickets for the destination
-			totalDestination++
-		}
-	}
-	// Check if the total of tickets for the destination is equal than 0
-	if totalDestination == 0 {
-		return 0, errors.New("no tickets found for that destination")
+	// GetTotalTickets function to get the total of tickets for the destination
+	totalDestination, err := GetTotalTickets(destination)
+	// Check if there is an error
+	if err != nil {
+		return 0, err
 	}
 	// Calculate the average of tickets for the destination in float64
 	average := (float64(totalDestination) / float64(total)) * 100.0
